@@ -1,7 +1,7 @@
 # Tictactoe²
 
 This is a basic implementation of a tictactoe² game. We used to play this in school a lot.
-The basic idea is having a ticktacktoe board in every field of a bigger board.
+The basic idea is having a tictactoe board in every field of a bigger board.
 
 ## Rules
 

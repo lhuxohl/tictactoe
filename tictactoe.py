@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
+# importing necessary libraries
 import sys
 
+# initializing global variables
 player = 'O'
-
 game = [
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ''],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ''],
@@ -14,9 +15,10 @@ game = [
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ''],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ''],
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '']
-]
+]  # the board consists of a tictcatoe board in every field which contains an extra space for winning conditions
 
 
+# method to print the complete game
 def print_game():
     for i in range(0, len(game), 3):
         print(
@@ -40,6 +42,7 @@ def print_game():
     print()
 
 
+# method to print the selected board
 def print_board(board):
     print(game[board][0] + '|' + game[board][1] + '|' + game[board][2])
     print(game[board][3] + '|' + game[board][4] + '|' + game[board][5])
@@ -53,6 +56,7 @@ def draw_game():
     return True
 
 
+# checks if the game is win by the current player
 def won_game():
     if (
             (game[0][9] == player and game[1][9] == player and game[2][9] == player) or  # horizontal top
@@ -68,12 +72,32 @@ def won_game():
     return False
 
 
+# checks if thr game ended in a draw of if a player won
 def done():
     if won_game():
         return True
     return False
 
 
+# changes the number selected to the correct position of the array
+def get_number(num):
+    switcher = {
+        1: 6,
+        2: 7,
+        3: 8,
+        4: 3,
+        5: 4,
+        6: 5,
+        7: 0,
+        8: 1,
+        9: 2,
+    }
+    if (not (num in switcher.keys())):
+        return -1
+    return switcher.get(num)
+
+
+# checks if the board can be selected
 def valid_board(board):
     if board < 0 or board > 8:
         return False
@@ -82,6 +106,7 @@ def valid_board(board):
     return True
 
 
+# selects the board that will be used for the move
 def select_board():
     print('Please select a board:')
 
@@ -89,6 +114,7 @@ def select_board():
     if temp == '':
         sys.exit()
     temp = int(temp)
+    temp = get_number(temp)
 
     while not valid_board(temp):
         print('Not a valid board. Please try again:')
@@ -98,15 +124,19 @@ def select_board():
             sys.exit()
         temp = int(temp)
 
+        temp = get_number(temp);
+
     return temp
 
 
+# checks if the selected field is valid
 def valid_field(board, field):
     if game[board][field] == ' ':
         return True
     return False
 
 
+# selects a valid field
 def select_field(board):
     print('Please select a field:')
 
@@ -114,6 +144,7 @@ def select_field(board):
     if temp == '':
         sys.exit()
     temp = int(temp)
+    temp = get_number(temp)
 
     while not valid_field(board, temp):
         print('Not a valid field. Please try again:')
@@ -123,9 +154,12 @@ def select_field(board):
             sys.exit()
         temp = int(temp)
 
+        temp = get_number(temp)
+
     return temp
 
 
+# check if a board got won by a player
 def won_board(board):
     if (
             (game[board][0] == player and game[board][1] == player and game[board][2] == player) or  # horizontal top
@@ -143,6 +177,7 @@ def won_board(board):
     return False
 
 
+# check if a board ended in a draw
 def draw_board(board):
     for i in range(len(game[board]) - 1):
         if game[board][i] == ' ':

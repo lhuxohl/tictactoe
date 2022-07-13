@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 
-# importing necessary libraries
-import sys
-
 # initializing global variables
 player = 'O'
 game = [
@@ -112,7 +109,7 @@ def select_board():
 
     temp = input()
     if temp == '':
-        sys.exit()
+        exit()
     temp = int(temp)
     temp = get_number(temp)
 
@@ -121,7 +118,7 @@ def select_board():
 
         temp = input()
         if temp == '':
-            sys.exit()
+            exit()
         temp = int(temp)
 
         temp = get_number(temp);

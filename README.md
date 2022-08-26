@@ -17,7 +17,7 @@ the other. The current player can choose a board freely.
 The script runs in the command line using:
 
 ```
-python tictactoe.py
+python3 tictactoe.py
 ```
 
 or

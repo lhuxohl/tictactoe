@@ -14,7 +14,7 @@ the other. The current player can choose a board freely.
 
 ## Setup
 
-The script runs in the command line using:
+The script runs in the command line using Python:
 
 ```
 python3 tictactoe.py
@@ -25,6 +25,13 @@ or
 ```
 chmod +x tictactoe.py
 ./tictactoe.py
+```
+
+or using Node:
+
+```
+npm install package.json
+node .
 ```
 
 The boards are indexed from 1 to 9 as well as the fields. The Game can be cancelled at
